@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Koin With SDK"
 include(":app")
+include(":mysdk")

@@ -12,16 +12,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.wsa.koinwithsdk.ui.theme.KoinWithSDKTheme
+import com.wsa.mysdk.MySdkClassInterface
+import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
+
+    private val mySdk: MySdkClassInterface by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val customString = mySdk.getCustomString()
         enableEdgeToEdge()
         setContent {
             KoinWithSDKTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        customMessage = customString,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -31,9 +36,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting(customMessage: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = customMessage,
         modifier = modifier
     )
 }
