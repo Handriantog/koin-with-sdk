@@ -12,12 +12,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.wsa.koinwithsdk.ui.theme.KoinWithSDKTheme
+import com.wsa.mysdk.MySdk
 import com.wsa.mysdk.SecretGeneratorInterface
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    private val secretGenerator: SecretGeneratorInterface by inject()
+    //private val secretGenerator: SecretGeneratorInterface by inject()
+    private val secretGenerator: SecretGeneratorInterface = MySdk.getSecretGenerator()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val customString = secretGenerator.getSecretKey()
