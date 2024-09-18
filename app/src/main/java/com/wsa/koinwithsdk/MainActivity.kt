@@ -12,15 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.wsa.koinwithsdk.ui.theme.KoinWithSDKTheme
-import com.wsa.mysdk.MySdkClassInterface
+import com.wsa.mysdk.SecretGeneratorInterface
 import org.koin.android.ext.android.inject
 
 class MainActivity : ComponentActivity() {
 
-    private val mySdk: MySdkClassInterface by inject()
+    private val secretGenerator: SecretGeneratorInterface by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val customString = mySdk.getCustomString()
+        val customString = secretGenerator.getSecretKey()
         enableEdgeToEdge()
         setContent {
             KoinWithSDKTheme {
